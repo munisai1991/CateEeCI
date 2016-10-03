@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="CgPubSubSamples.doc:docA" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="name">Kristopher Kycia</value>
+      <value name="age">41</value>
+      <record name="address" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="city">Montreal</value>
+        <value name="street">Ave Park</value>
+      </record>
+      <record name="_env" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="trackId">9b068d2c-3984-48c5-af00-6fa57212ed1d:d9d970d0-f47c-40fc-882c-74047e516c24</value>
+        <value name="locale"></value>
+        <value name="activation">wm6a6beef60-b74f-164a-88d8-987c60148094</value>
+        <value name="businessContext">wm6:c7c1c980-4fb0-1424-968e-aafee1905c31\s9c7a88d0-c6a6-1c2a-b917-c2cecdb82830\sa6beef60-b74f-164a-88d8-987c60148094:wm6a6beef60-b74f-164a-88d8-987c60148094:null:IS_61:null</value>
+        <value name="uuid">783e5ca0-7f21-11e6-833d-000000000018</value>
+        <value name="pubId">J_jRQtEolDEurgAVIwwwADXaZQs__DefaultClient</value>
+        <number name="eventID" type="java.lang.Long">84</number>
+        <Date name="recvTime" type="java.util.Date">Tue Sep 20 07:00:40 EDT 2016</Date>
+      </record>
+    </record>
+  </record>
+</IDataXMLCoder>

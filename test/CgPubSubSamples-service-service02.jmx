@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="invokeAlias" elementType="Argument">
+            <stringProp name="Argument.name">invokeAlias</stringProp>
+            <stringProp name="Argument.value">/cate_runner</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="jmxScriptDirectory" elementType="Argument">
+            <stringProp name="Argument.name">jmxScriptDirectory</stringProp>
+            <stringProp name="Argument.value">${__P(jmxScriptDirectory,.)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Invoke Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1428501082000</longProp>
+        <longProp name="ThreadGroup.end_time">1428501082000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <WmServiceInvokeSampler guiclass="WmServiceInvokeSamplerGui" testclass="WmServiceInvokeSampler" testname="CgPubSubSamples.service:service02(00000010)" enabled="true">
+          <stringProp name="HTTPSampler.domain">${__P(hostname,localhost)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(port,5555)}</stringProp>
+          <stringProp name="HTTPSampler.proxyHost">${__P(hostname,localhost)}</stringProp>
+          <stringProp name="HTTPSampler.proxyPort">${__P(port,5555)}</stringProp>
+          <stringProp name="HTTPSampler.proxyUser">${__P(username,Administrator)}</stringProp>
+          <stringProp name="HTTPSampler.proxyPass">${__P(password,manage)}</stringProp>
+		  <stringProp name="WmSampler.serviceInputType">IData XML Content</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/invoke/CgAutomationTestEngine:handleHTTPRequest</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+		  <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">WebMethods Service Invocation</stringProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+			  <elementProp name="xmlDocument" elementType="HTTPArgument">
+                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                 <stringProp name="Argument.name">fileContent</stringProp>
+                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;IDataXMLCoder version=&quot;1.0&quot;&gt;
+  &lt;record javaclass=&quot;com.wm.data.ISMemDataImpl&quot;&gt;
+    &lt;record name=&quot;CgPubSubSamples.doc:docA&quot; javaclass=&quot;com.wm.data.ISMemDataImpl&quot;&gt;
+      &lt;value name=&quot;name&quot;&gt;Jane&lt;/value&gt;
+      &lt;value name=&quot;age&quot;&gt;75&lt;/value&gt;
+      &lt;record name=&quot;address&quot; javaclass=&quot;com.wm.data.ISMemDataImpl&quot;&gt;
+        &lt;value name=&quot;city&quot;&gt;Montreal&lt;/value&gt;
+        &lt;value name=&quot;street&quot;&gt;Westminster&lt;/value&gt;
+      &lt;/record&gt;
+      &lt;record name=&quot;_env&quot; javaclass=&quot;com.wm.data.ISMemDataImpl&quot;&gt;
+        &lt;value name=&quot;trackId&quot;&gt;9b068d2c-3984-48c5-af00-6fa57212ed1d:d9d970d0-f47c-40fc-882c-74047e516c24&lt;/value&gt;
+        &lt;value name=&quot;locale&quot;&gt;&lt;/value&gt;
+        &lt;value name=&quot;activation&quot;&gt;wm6a6beef60-b74f-164a-88d8-987c60148094&lt;/value&gt;
+        &lt;value name=&quot;businessContext&quot;&gt;wm6:c7c1c980-4fb0-1424-968e-aafee1905c31\s9c7a88d0-c6a6-1c2a-b917-c2cecdb82830\sa6beef60-b74f-164a-88d8-987c60148094:wm6a6beef60-b74f-164a-88d8-987c60148094:null:IS_61:null&lt;/value&gt;
+        &lt;value name=&quot;uuid&quot;&gt;783eaac0-7f21-11e6-afe2-000000000019&lt;/value&gt;
+        &lt;value name=&quot;pubId&quot;&gt;J_jRQtEolDEurgAVIwwwADXaZQs__DefaultClient&lt;/value&gt;
+        &lt;number name=&quot;eventID&quot; type=&quot;java.lang.Long&quot;&gt;85&lt;/number&gt;
+        &lt;Date name=&quot;recvTime&quot; type=&quot;java.util.Date&quot;&gt;Tue Sep 20 07:00:40 EDT 2016&lt;/Date&gt;
+      &lt;/record&gt;
+    &lt;/record&gt;
+  &lt;/record&gt;
+&lt;/IDataXMLCoder&gt;
+</stringProp>
+                 <stringProp name="Argument.metadata">=</stringProp>
+                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="serviceName" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">CgPubSubSamples.service:service02</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">serviceName</stringProp>
+              </elementProp>
+<!-- :mockedServices: -->	
+			  <elementProp name="monitoredServices" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">monitoredServices</stringProp>
+                <stringProp name="Argument.value">CgPubSubSamples.mock:mock02;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </WmServiceInvokeSampler>
+        <hashTree>
+		   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="XPath Extractor" enabled="true">
+            <stringProp name="XPathExtractor.default"></stringProp>
+            <stringProp name="XPathExtractor.refname">innerInvokes</stringProp>
+            <stringProp name="XPathExtractor.xpathQuery">/document/innerInvokes</stringProp>
+            <boolProp name="XPathExtractor.validate">false</boolProp>
+            <boolProp name="XPathExtractor.tolerant">false</boolProp>
+            <boolProp name="XPathExtractor.namespace">false</boolProp>
+          </XPathExtractor>
+		  <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Check the IS response" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+            <stringProp name="TestPlan.comments">Check if the Integration Server response code = 200</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Check errorMessage" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/errorMessage[text()=&quot;OK&quot;]</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">true</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+            <stringProp name="TestPlan.comments">Check errorMessage</stringProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="outputResult" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="upper" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="name[text()=&quot;JANE&quot;]" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper/name[text()=&quot;JANE&quot;]</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="age[text()=&quot;75&quot;]" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper/age[text()=&quot;75&quot;]</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="address" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper/address</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="street[text()=&quot;WESTMINSTER&quot;]" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper/address/street[text()=&quot;WESTMINSTER&quot;]</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="city[text()=&quot;MONTREAL&quot;]" enabled="true">
+            <boolProp name="XPath.negate">false</boolProp>
+            <stringProp name="XPath.xpath">/document/outputResult/upper/address/city[text()=&quot;MONTREAL&quot;]</stringProp>
+            <boolProp name="XPath.validate">false</boolProp>
+            <boolProp name="XPath.whitespace">false</boolProp>
+            <boolProp name="XPath.tolerant">false</boolProp>
+            <boolProp name="XPath.namespace">false</boolProp>
+          </XPathAssertion>
+          <hashTree/>
+		  <WmInnerInvokeAssertion guiclass="WmInnerInvokeAssertionGui" testclass="WmInnerInvokeAssertion" testname="CgPubSubSamples.mock:mock02 [10]" enabled="true">
+            <stringProp name="InnerInvoke.serviceName">CgPubSubSamples.mock:mock02</stringProp>
+            <boolProp name="InnerInvoke.checkServiceInput">true</boolProp>
+            <stringProp name="InnerInvoke.inputDataXPath">/document/inputData/num1[text()=&quot;2&quot;]
+/document/inputData/num2[text()=&quot;0&quot;]</stringProp>
+            <boolProp name="InnerInvoke.checkServiceOutput">true</boolProp>
+            <stringProp name="InnerInvoke.outputDataXPath">/document/outputResult/result[text()=&quot;2&quot;]</stringProp>
+            <boolProp name="InnerInvoke.checkException"><!-- :checkException: --></boolProp>
+            <stringProp name="InnerInvoke.exceptionData"><!-- :InnerServiceException: --></stringProp>
+            <stringProp name="TestPlan.comments">WebMethods Inner Invoke Assert</stringProp>
+          </WmInnerInvokeAssertion>
+          <hashTree/>
+<!-- :innerAssertion: -->		  
+          <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Extract XPath" enabled="true">
+            <stringProp name="XPathExtractor.default">no.publish.context.id</stringProp>
+            <stringProp name="XPathExtractor.refname">publishContextID</stringProp>
+            <stringProp name="XPathExtractor.xpathQuery">/document/publishContextID</stringProp>
+            <boolProp name="XPathExtractor.validate">false</boolProp>
+            <boolProp name="XPathExtractor.tolerant">false</boolProp>
+            <boolProp name="XPathExtractor.namespace">false</boolProp>
+          </XPathExtractor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View results (Request &amp; Response)" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <threadCounts>true</threadCounts>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+		 </hashTree>
+<!-- :HTTP Samplers: -->
+<!-- :PUBLISH STATE Assertions: -->
+       </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
